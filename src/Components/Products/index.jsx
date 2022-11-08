@@ -11,7 +11,9 @@ import React from 'react';
 
 const Products = () => {
 	const { products } = useSelector((state) => state.products);
+	const categories = useSelector((state) => state.categories);
 	console.log(products);
+	console.log(categories);
 
 	return (
 		<>

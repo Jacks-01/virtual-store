@@ -13,7 +13,6 @@ export const categorySlice = createSlice({
 			// change the current category
 			console.log('categories.jsx changeCategory()');
 			state.currentCategory = action.payload
-			console.log(action.payload)
 			console.log(state.currentCategory)
 			
 		}
