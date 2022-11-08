@@ -1,12 +1,17 @@
 import Header from "./Components/Header";
 import Products from "./Components/Products";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme";
+import { CssBaseline } from "@mui/material";
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Header />
       <Products />
-    </>
+    </ThemeProvider>
+
   );
 }
 
