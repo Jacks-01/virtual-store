@@ -52,9 +52,9 @@ const Category = () => {
 				maxWidth='xs'
 				sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}
 			>
-				<Typography variant='h2'> {categories.currentCategory} </Typography>
+				<Typography variant='h1'> {categories.currentCategory} </Typography>
 
-				<Typography variant='subtitle1'> Description goes here ...</Typography>
+				<Typography variant='h6'> Description goes here ...</Typography>
 			</Container>
 		</>
 	);
