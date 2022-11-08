@@ -37,13 +37,23 @@ const Category = () => {
 						>
 							food
 						</Button>
+						<Button
+							onClick={(e) => {
+								dispatch(filterProducts(`${e.target.textContent}`));
+							}}
+						>
+							reset filter
+						</Button>
 					</ButtonGroup>
 				</Grid>
 			</Grid>
 
-			<Container maxWidth='xs' sx={{display:'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-                <Typography variant='h2'> {categories.currentCategory} </Typography>
-                
+			<Container
+				maxWidth='xs'
+				sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}
+			>
+				<Typography variant='h2'> {categories.currentCategory} </Typography>
+
 				<Typography variant='subtitle1'> Description goes here ...</Typography>
 			</Container>
 		</>

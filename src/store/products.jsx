@@ -36,6 +36,7 @@ export const productSlice = createSlice({
 		filterProducts: (state, action) => {
 			// filter items based on category here
 			console.log('products.jsx filter()');
+			if (action.payload === 'reset filter') { state.products = [...initialState.products];  return}
 			state.products = initialState.products.filter(product => product.category === action.payload)
 			console.log(state.products)
 		},
