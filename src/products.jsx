@@ -7,14 +7,16 @@ const initialState = {
 			description: 'See all the things',
 			category: 'electronics',
 			price: '$0.00',
-			inventory: '5',
+            inventory: '5',
+            image: `${process.env.PUBLIC_URL}/media/tv.png`
 		},
 		{
 			name: 'MacBook',
 			description: 'Do all the things',
 			category: 'electronics',
 			price: '$0.00',
-			inventory: '9',
+            inventory: '9',
+            image: `${process.env.PUBLIC_URL}/media/macbook.png`
 		},
 	],
 };
