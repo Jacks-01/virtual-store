@@ -36,7 +36,7 @@ const Products = () => {
 						</Typography>
 						<Typography
 							variant='body2'
-							color='text.secondary'
+							color='text.primary'
 						>
 							{product.description}
 						</Typography>
