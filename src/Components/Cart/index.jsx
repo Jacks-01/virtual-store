@@ -1,22 +1,15 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {
-	List,
-	ListItem,
-	Box,
-	Drawer,
-	Typography,
-	Divider,
-} from '@mui/material';
+import { List, ListItem, Drawer, Typography, Divider } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Grid from '@mui/material/Unstable_Grid2';
+import numeral from 'numeral';
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
 	console.log(cart);
-	const dispatch = useDispatch();
 
 	const [drawer, setDrawer] = useState(false);
 
@@ -50,7 +43,9 @@ const Cart = () => {
 									justifyContent='flex-end'
 									alignItems='center'
 								>
-									<Typography>{item.price}</Typography>
+									<Typography>
+										{numeral(item.price).format('$0,0.00')}
+									</Typography>
 									<IconButton sx={{ color: 'black' }}>
 										<RemoveCircleIcon />
 									</IconButton>
@@ -63,9 +58,9 @@ const Cart = () => {
 					<Grid
 						container
 						justifyContent='flex-end'
-						sx={{ pr: '4rem', mt: '1rem' }}
+						sx={{ pr: '3.5rem', mt: '1rem' }}
 					>
-						<Typography> Subtotal: $5000</Typography>
+						<Typography> Subtotal: {numeral(cart.subtotal).format('$0,0.00')}</Typography>
 					</Grid>
 				</List>
 			</Drawer>

@@ -6,7 +6,7 @@ const initialState = {
 			name: 'TV',
 			description: 'See all the things',
 			category: 'electronics',
-			price: '$0.00',
+			price: 599,
             inventory: '5',
             image: `${process.env.PUBLIC_URL}/media/tv.png`
 		},
@@ -14,7 +14,7 @@ const initialState = {
 			name: 'MacBook',
 			description: 'Do all the things',
 			category: 'electronics',
-			price: '$0.00',
+			price: 1499,
             inventory: '9',
             image: `${process.env.PUBLIC_URL}/media/macbook.png`
 		},
@@ -22,7 +22,7 @@ const initialState = {
 			name: 'Apple',
 			description: 'A simple apple',
 			category: 'food',
-			price: '$10000',
+			price: 3,
 			inventory: '5',
 			image: `${process.env.PUBLIC_URL}/media/apple.png`
 		},
