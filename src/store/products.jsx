@@ -26,6 +26,46 @@ const initialState = {
 			inventory: '5',
 			image: `${process.env.PUBLIC_URL}/media/apple.png`
 		},
+		{
+			name: 'SpongeBob onesie',
+			description: 'A sponge named bob',
+			category: 'clothing',
+			price: 22,
+			inventory: '5',
+			image: `${process.env.PUBLIC_URL}/media/spongebob.jpg`
+		},
+		{
+			name: 'Plaid onesie',
+			description: 'warm and comfy',
+			category: 'clothing',
+			price: 15,
+			inventory: '5',
+			image: `${process.env.PUBLIC_URL}/media/plaid.jpg`
+		},
+		{
+			name: 'Candle',
+			description: 'smells goooood',
+			category: 'candles',
+			price: 12,
+			inventory: '5',
+			image: `${process.env.PUBLIC_URL}/media/candle.jpg`
+		},
+		{
+			name: 'Fleece onesie',
+			description: 'soft, yet practical',
+			category: 'clothing',
+			price: 20,
+			inventory: '5',
+			image: `${process.env.PUBLIC_URL}/media/fleece.png`
+		},
+		{
+			name: 'Soy candle',
+			description: 'dont get your nose too close!',
+			category: 'candles',
+			price: 15,
+			inventory: '5',
+			image: `${process.env.PUBLIC_URL}/media/soy-candle.png`
+		},
 	],
 };
 
