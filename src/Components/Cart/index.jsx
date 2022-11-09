@@ -36,25 +36,28 @@ const Cart = () => {
 
 					<Divider />
 					{cart.items.map((item, index) => (
-						<ListItem key={`cart-item-${index}`}>
-							<Grid
-								xs
-								alignItems='center'
-							>
-								<Typography>{item.name}</Typography>
-							</Grid>
-							<Grid
-								xs
-								container
-								justifyContent='flex-end'
-								alignItems='center'
-							>
-								<Typography>{item.price}</Typography>
-								<IconButton sx={{ color: 'black' }}>
-									<RemoveCircleIcon />
-								</IconButton>
-							</Grid>
-						</ListItem>
+						<>
+							<ListItem key={`cart-item-${index}`}>
+								<Grid
+									xs
+									alignItems='center'
+								>
+									<Typography>{item.name}</Typography>
+								</Grid>
+								<Grid
+									xs
+									container
+									justifyContent='flex-end'
+									alignItems='center'
+								>
+									<Typography>{item.price}</Typography>
+									<IconButton sx={{ color: 'black' }}>
+										<RemoveCircleIcon />
+									</IconButton>
+								</Grid>
+							</ListItem>
+							<Divider />
+						</>
 					))}
 					<Divider />
 					<Grid
