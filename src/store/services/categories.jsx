@@ -8,9 +8,12 @@ export const categoryApi = createApi({
     endpoints: (builder) => ({
         getCategoryByName: builder.query({
             query: (name) => `categories/${name}`
-        })
+        }),
+        getProductByName: builder.query({
+            query: (name) => `products/${name}`
+        }),
     })
 });
 
 
-export const { useGetCategoryByNameQuery } = categoryApi;
+export const { useGetCategoryByNameQuery, useGetProductByNameQuery } = categoryApi;

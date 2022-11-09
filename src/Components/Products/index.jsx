@@ -11,11 +11,15 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { useSelector, useDispatch } from 'react-redux';
 import { addItem } from '../../store/cart';
 import React from 'react';
+import { useGetProductByNameQuery } from '../../store/services/categories';
+
 
 const Products = () => {
 	const { products } = useSelector((state) => state.products);
 	const categories = useSelector((state) => state.categories);
 	const dispatch = useDispatch();
+	const { data, error, isLoading } = useGetProductByNameQuery('');
+	console.log(data, isLoading, error)
 	console.log(products);
 	console.log(categories);
 
