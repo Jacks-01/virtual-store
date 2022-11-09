@@ -11,9 +11,12 @@ export const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addItem: (state, action) => {
-			state.totalQuantity = state.items.length;
 			state.items = [...state.items, { ...action.payload }];
-			// for subtotal use numeral.js
+			state.totalQuantity = state.items.length;
+			// calculate subtotal
+			state.subtotal = state.items.reduce((acc, obj) => {
+				return acc + obj.price;
+			}, 0);
 		},
 
 		removeItem: (state, action) => {},

@@ -1,30 +1,23 @@
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import {
-	List,
-	ListItem,
-	Stack,
-	Box,
-	Drawer,
-	Typography,
-	Divider,
-	Paper,
-} from '@mui/material';
+import { List, ListItem, Drawer, Typography, Divider } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import RemoveIcon from '@mui/icons-material/Remove';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import Grid from '@mui/material/Unstable_Grid2';
+import numeral from 'numeral';
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
 	console.log(cart);
-	const dispatch = useDispatch();
 
 	const [drawer, setDrawer] = useState(false);
 
 	return (
 		<>
 			<IconButton onClick={() => setDrawer(true)}>
-				<ShoppingCartIcon /> {`(${cart.totalQuantity})`}
+				<ShoppingCartIcon sx={{ color: '#ffffff' }} />{' '}
+				<Typography color='#ffffff'>{`(${cart.totalQuantity})`}</Typography>
 			</IconButton>
 			<Drawer
 				anchor='right'
@@ -33,19 +26,42 @@ const Cart = () => {
 			>
 				<List sx={{ padding: '2rem', width: '30vw' }}>
 					<Typography variant='body1'>Cart</Typography>
-					<Typography>Subtotal: {}</Typography>
+
 					<Divider />
 					{cart.items.map((item, index) => (
-						<ListItem key={`cart-item-${index}`}>
-							<Box sx={{ flexGrow: 1, height: 'auto', m: '.5rem' }}>
-								<Paper elevation='6' >
-                                    <Typography sx={{pb: '.5rem'}}>{item.name}</Typography>
-                                    <Typography>{item.price}</Typography>
-                                    {/* <RemoveIcon/> */}
-								</Paper>
-							</Box>
-						</ListItem>
+						<>
+							<ListItem key={`cart-item-${index}`}>
+								<Grid
+									xs
+									alignItems='center'
+								>
+									<Typography>{item.name}</Typography>
+								</Grid>
+								<Grid
+									xs
+									container
+									justifyContent='flex-end'
+									alignItems='center'
+								>
+									<Typography>
+										{numeral(item.price).format('$0,0.00')}
+									</Typography>
+									<IconButton sx={{ color: 'black' }}>
+										<RemoveCircleIcon />
+									</IconButton>
+								</Grid>
+							</ListItem>
+							<Divider />
+						</>
 					))}
+					<Divider />
+					<Grid
+						container
+						justifyContent='flex-end'
+						sx={{ pr: '3.5rem', mt: '1rem' }}
+					>
+						<Typography> Subtotal: {numeral(cart.subtotal).format('$0,0.00')}</Typography>
+					</Grid>
 				</List>
 			</Drawer>
 		</>
