@@ -33,12 +33,7 @@ const Cart = () => {
 			>
 				<List sx={{ padding: '2rem', width: '30vw' }}>
 					<Typography variant='body1'>Cart</Typography>
-					<Grid
-						container
-						justifyContent='flex-start'
-					>
-						<Typography> Subtotal: $5000</Typography>
-					</Grid>
+
 					<Divider />
 					{cart.items.map((item, index) => (
 						<ListItem key={`cart-item-${index}`}>
@@ -62,7 +57,13 @@ const Cart = () => {
 						</ListItem>
 					))}
 					<Divider />
-					
+					<Grid
+						container
+						justifyContent='flex-end'
+						sx={{ pr: '4rem', mt: '1rem' }}
+					>
+						<Typography> Subtotal: $5000</Typography>
+					</Grid>
 				</List>
 			</Drawer>
 		</>
