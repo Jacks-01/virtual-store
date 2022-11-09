@@ -2,17 +2,16 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {
 	List,
 	ListItem,
-	Stack,
 	Box,
 	Drawer,
 	Typography,
 	Divider,
-	Paper,
 } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
-import RemoveIcon from '@mui/icons-material/Remove';
+import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Grid from '@mui/material/Unstable_Grid2';
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
@@ -24,7 +23,8 @@ const Cart = () => {
 	return (
 		<>
 			<IconButton onClick={() => setDrawer(true)}>
-				<ShoppingCartIcon sx={{color:'#ffffff'}} /> <Typography color='#ffffff'>{`(${cart.totalQuantity})`}</Typography>
+				<ShoppingCartIcon sx={{ color: '#ffffff' }} />{' '}
+				<Typography color='#ffffff'>{`(${cart.totalQuantity})`}</Typography>
 			</IconButton>
 			<Drawer
 				anchor='right'
@@ -33,19 +33,36 @@ const Cart = () => {
 			>
 				<List sx={{ padding: '2rem', width: '30vw' }}>
 					<Typography variant='body1'>Cart</Typography>
-					<Typography>Subtotal: {}</Typography>
+					<Grid
+						container
+						justifyContent='flex-start'
+					>
+						<Typography> Subtotal: $5000</Typography>
+					</Grid>
 					<Divider />
 					{cart.items.map((item, index) => (
 						<ListItem key={`cart-item-${index}`}>
-							<Box sx={{ flexGrow: 1, height: 'auto', m: '.5rem' }}>
-								<Paper elevation='6' >
-                                    <Typography sx={{pb: '.5rem'}}>{item.name}</Typography>
-                                    <Typography>{item.price}</Typography>
-                                    {/* <RemoveIcon/> */}
-								</Paper>
-							</Box>
+							<Grid
+								xs
+								alignItems='center'
+							>
+								<Typography>{item.name}</Typography>
+							</Grid>
+							<Grid
+								xs
+								container
+								justifyContent='flex-end'
+								alignItems='center'
+							>
+								<Typography>{item.price}</Typography>
+								<IconButton sx={{ color: 'black' }}>
+									<RemoveCircleIcon />
+								</IconButton>
+							</Grid>
 						</ListItem>
 					))}
+					<Divider />
+					
 				</List>
 			</Drawer>
 		</>
