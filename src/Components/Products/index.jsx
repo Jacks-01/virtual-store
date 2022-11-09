@@ -8,12 +8,14 @@ import {
 	Typography,
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItem } from '../../store/cart';
 import React from 'react';
 
 const Products = () => {
 	const { products } = useSelector((state) => state.products);
 	const categories = useSelector((state) => state.categories);
+	const dispatch = useDispatch();
 	console.log(products);
 	console.log(categories);
 
@@ -52,8 +54,20 @@ const Products = () => {
 									</Typography>
 								</CardContent>
 								<CardActions>
-									<Button size='small'>Add to Cart</Button>
-									<Button size='small'>View Details</Button>
+									<Button
+										color='secondary'
+										variant='contained'
+										size='small'
+										onClick={() => dispatch(addItem(product))}
+									>
+										Add to Cart
+									</Button>
+									<Button
+										variant='contained'
+										size='small'
+									>
+										View Details
+									</Button>
 								</CardActions>
 							</Card>
 						</Grid>
