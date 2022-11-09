@@ -11,7 +11,8 @@ export const cartSlice = createSlice({
 	reducers: {
 		addItem: (state, action) => {
 			console.log('cart.jsx', action.payload);
-			state.items = [{ ...action.payload }];
+			state.totalQuantity = state.items.length;
+			state.items = [...state.items, { ...action.payload }];
 			console.log('current cart:', state.items);
 		},
 
