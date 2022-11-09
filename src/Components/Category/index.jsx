@@ -15,7 +15,7 @@ const Category = () => {
 			<Grid
 				container
 				spacing={2}
-				sx={{ mt: '6rem', ml: '4rem', mb: '4rem', width: '30vw' }}
+				sx={{ mt: '2rem', ml: '4rem', mb: '4rem', width: '30vw' }}
 			>
 				<Grid xs={8}>
 					<Typography>BROWSE OUR PRODUCTS</Typography>
