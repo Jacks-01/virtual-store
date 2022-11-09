@@ -24,7 +24,7 @@ const Cart = () => {
 	return (
 		<>
 			<IconButton onClick={() => setDrawer(true)}>
-				<ShoppingCartIcon /> {`(${cart.totalQuantity})`}
+				<ShoppingCartIcon sx={{color:'#ffffff'}} /> <Typography color='#ffffff'>{`(${cart.totalQuantity})`}</Typography>
 			</IconButton>
 			<Drawer
 				anchor='right'
