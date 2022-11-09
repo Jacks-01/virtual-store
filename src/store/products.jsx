@@ -56,7 +56,7 @@ const initialState = {
 			category: 'clothing',
 			price: 20,
 			inventory: '5',
-			image: `${process.env.PUBLIC_URL}/media/fleece.png`
+			image: `${process.env.PUBLIC_URL}/media/fleece.jpg`
 		},
 		{
 			name: 'Soy candle',
@@ -64,7 +64,7 @@ const initialState = {
 			category: 'candles',
 			price: 15,
 			inventory: '5',
-			image: `${process.env.PUBLIC_URL}/media/soy-candle.png`
+			image: `${process.env.PUBLIC_URL}/media/soy-candle.jpg`
 		},
 	],
 };

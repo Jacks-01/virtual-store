@@ -39,6 +39,22 @@ const Category = () => {
 						</Button>
 						<Button
 							onClick={(e) => {
+								dispatch(changeCategory(`${e.target.textContent}`));
+								dispatch(filterProducts(`${e.target.textContent}`));
+							}}
+						>
+							candles
+						</Button>
+						<Button
+							onClick={(e) => {
+								dispatch(changeCategory(`${e.target.textContent}`));
+								dispatch(filterProducts(`${e.target.textContent}`));
+							}}
+						>
+							clothing
+						</Button>
+						<Button
+							onClick={(e) => {
 								dispatch(filterProducts(`${e.target.textContent}`));
 							}}
 						>
