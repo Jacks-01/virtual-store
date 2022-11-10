@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	products: [],
-	allProducts: [],
+	cachedProducts: [],
 };
 
 export const productSlice = createSlice({
@@ -10,23 +10,24 @@ export const productSlice = createSlice({
 	initialState,
 	reducers: {
 		filterProducts: (state, action) => {
-			state.products = state.allProducts;
-			// filter items based on category here
-			console.log('products.jsx filter()');
+			// "reset" state by changing it to the master copy recieved from the api. This is essentially caching the data we fetch so it doesn't modify the original products array.
+			state.products = state.cachedProducts;
+			
+			// reset the products array
 			if (action.payload === 'reset filter') {
-				state.products = state.allProducts;
+				state.products = state.cachedProducts;
 				return;
 			}
+			// filter items based on category here
 			state.products = state.products.filter(
 				(product) => product.category === action.payload
 			);
 			console.log('yo', state.products);
 		},
 		getProductsFromApi: (state, action) => {
-			console.log('got items from API', action.payload);
+			// set both products array and the cachedProducts array with the data from the RTK query hook
 			state.products = action.payload;
-			state.allProducts = action.payload
-			console.log('products after API call', state.products);
+			state.cachedProducts = action.payload
 		},
 	},
 });

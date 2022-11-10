@@ -1,4 +1,10 @@
-import { Button, ButtonGroup, Typography, Container } from '@mui/material';
+import {
+	Button,
+	ButtonGroup,
+	Typography,
+	Container,
+	CircularProgress,
+} from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -26,7 +32,12 @@ const Category = () => {
 						{error ? (
 							<>Oh no, there was an error</>
 						) : isLoading ? (
-							<>Loading...</>
+							<Container>
+								<CircularProgress
+									sx={{ margin: 'auto' }}
+									color='secondary'
+								/>
+							</Container>
 						) : data ? (
 							data.results.map((category, index) => (
 								<Button
@@ -36,7 +47,12 @@ const Category = () => {
 										dispatch(filterProducts(`${e.target.textContent}`));
 									}}
 								>
-									{category.name}
+									<Typography
+										variant='body2'
+										sx={{ padding: '.5rem' }}
+									>
+										{category.name}
+									</Typography>
 								</Button>
 							))
 						) : null}

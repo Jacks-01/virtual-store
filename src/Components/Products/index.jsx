@@ -6,6 +6,7 @@ import {
 	CardMedia,
 	Container,
 	Typography,
+	CircularProgress,
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useSelector, useDispatch } from 'react-redux';
@@ -29,10 +30,6 @@ const Products = () => {
 		else if (error) console.log('ERROR IN API CALL:', error);
 	}, [data, error, isLoading, dispatch]);
 
-	const getData = () => {
-		
-	}
-
 	return (
 		<>
 			<Container maxWidth='md'>
@@ -43,7 +40,12 @@ const Products = () => {
 					{error ? (
 						<>Oh no, there was an error</>
 					) : isLoading ? (
-						<>Loading...</>
+						<Container maxWidth='md'>
+							<CircularProgress
+								sx={{ margin: 'auto' }}
+								color='secondary'
+							/>
+						</Container>
 					) : data ? (
 						products.map((product, index) => (
 							<Grid>
