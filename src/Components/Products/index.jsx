@@ -45,9 +45,9 @@ const Products = () => {
 						</Container>
 					) : data ? (
 						products.map((product, index) => (
-							<Grid>
+							<Grid key={`product-${index}`}>
 								<Card
-									key={index}
+									
 									sx={{ maxWidth: 345, mt: '100px' }}
 								>
 									<CardMedia
