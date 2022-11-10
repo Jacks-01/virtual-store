@@ -20,10 +20,6 @@ const Products = () => {
 	const categories = useSelector((state) => state.categories);
 	const dispatch = useDispatch();
 	const { data, error, isLoading } = useGetProductByNameQuery('');
-	console.log(data, isLoading, error);
-	console.log(products);
-	// console.log(categories);
-	// const [productData, setProductData] = useState(null);
 
 	useEffect(() => {
 		if (data) dispatch(getProductsFromApi([...data.results]));

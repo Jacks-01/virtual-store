@@ -11,14 +11,11 @@ export const categorySlice = createSlice({
 	reducers: {
 		changeCategory: (state, action) => {
 			// change the current category
-			console.log('categories.jsx changeCategory()');
-			state.currentCategory = action.payload
-			console.log(state.currentCategory)
-			
-		}
+			state.currentCategory = action.payload;
+		},
 	},
 });
 
-export const { changeCategory } = categorySlice.actions
+export const { changeCategory } = categorySlice.actions;
 
-export default categorySlice.reducer
+export default categorySlice.reducer;

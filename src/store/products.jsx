@@ -22,7 +22,6 @@ export const productSlice = createSlice({
 			state.products = state.products.filter(
 				(product) => product.category === action.payload
 			);
-			console.log('yo', state.products);
 		},
 		getProductsFromApi: (state, action) => {
 			// set both products array and the cachedProducts array with the data from the RTK query hook

@@ -16,8 +16,6 @@ const Category = () => {
 	const categories = useSelector((state) => state.categories);
 	const dispatch = useDispatch();
 	const { data, error, isLoading } = useGetCategoryByNameQuery('');
-	console.log(data, isLoading, error);
-	// console.log(categories);
 
 	return (
 		<>
