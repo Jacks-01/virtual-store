@@ -6,16 +6,24 @@ import {
 	CircularProgress,
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeCategory } from '../../store/categories';
 import { filterProducts } from '../../store/products';
 import { useGetCategoryByNameQuery } from '../../store/services/categories';
+import { getCategoriesFromApi } from '../../store/categories';
+import React, { useEffect } from 'react';
 
 const Category = () => {
 	const categories = useSelector((state) => state.categories);
 	const dispatch = useDispatch();
+	//* I want to modify this so I can put in arguments later
 	const { data, error, isLoading } = useGetCategoryByNameQuery('');
+	
+	useEffect(() => {
+		if (data) dispatch(getCategoriesFromApi([...data.results]));
+		else if (isLoading) console.log('LOADING......');
+		else if (error) console.log('ERROR IN API CALL:', error);
+	}, [data, error, isLoading, dispatch]);
 
 	return (
 		<>
@@ -37,11 +45,11 @@ const Category = () => {
 								/>
 							</Container>
 						) : data ? (
-							data.results.map((category, index) => (
+							categories.cachedCategories.map((category, index) => (
 								<Button
 									key={`category-${index}`}
 									onClick={(e) => {
-										dispatch(changeCategory(`${e.target.textContent}`));
+										dispatch(changeCategory(category));
 										dispatch(filterProducts(`${e.target.textContent}`));
 									}}
 								>
@@ -72,10 +80,7 @@ const Category = () => {
 			>
 				<Typography variant='h1'> {categories.currentCategory} </Typography>
 
-				<Typography variant='h6'>
-					{' '}
-					{categories.currentCategory.description}
-				</Typography>
+				<Typography variant='h6'> {categories.currentDescription}</Typography>
 			</Container>
 		</>
 	);

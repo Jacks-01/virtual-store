@@ -2,7 +2,8 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
 	currentCategory: '',
-	categories: ['electronics', 'food'],
+	currentDescription: '',
+	cachedCategories: [],
 };
 
 export const categorySlice = createSlice({
@@ -11,11 +12,20 @@ export const categorySlice = createSlice({
 	reducers: {
 		changeCategory: (state, action) => {
 			// change the current category
-			state.currentCategory = action.payload;
+			console.log('yo yo', state.cachedCategories)
+			state.currentCategory = state.cachedCategories.filter(
+				(category) => category.name === action.payload
+			);
+			state.currentDescription = action.payload.description
+		},
+		getCategoriesFromApi: (state, action) => {
+			console.log('yo', action.payload);
+			state.cachedCategories = action.payload
+			console.log('yo yo yo ', state.cachedCategories)
 		},
 	},
 });
 
-export const { changeCategory } = categorySlice.actions;
+export const { changeCategory, getCategoriesFromApi } = categorySlice.actions;
 
 export default categorySlice.reducer;

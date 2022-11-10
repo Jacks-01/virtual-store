@@ -20,7 +20,7 @@ export const productSlice = createSlice({
 			}
 			// filter items based on category here
 			state.products = state.products.filter(
-				(product) => product.category === action.payload
+				(product) => product.category === action.payload.name
 			);
 		},
 		getProductsFromApi: (state, action) => {
