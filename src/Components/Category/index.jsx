@@ -10,8 +10,8 @@ const Category = () => {
 	const categories = useSelector((state) => state.categories);
 	const dispatch = useDispatch();
 	const { data, error, isLoading } = useGetCategoryByNameQuery('');
-	console.log(data, isLoading, error)
-	console.log(categories);
+	console.log(data, isLoading, error);
+	// console.log(categories);
 
 	return (
 		<>
@@ -23,39 +23,24 @@ const Category = () => {
 				<Grid xs={8}>
 					<Typography>BROWSE OUR PRODUCTS</Typography>
 					<ButtonGroup variant='text'>
-						<Button
-							onClick={(e) => {
-								dispatch(changeCategory(`${e.target.textContent}`));
-								dispatch(filterProducts(`${e.target.textContent}`));
-							}}
-						>
-							electronics
-						</Button>
+						{error ? (
+							<>Oh no, there was an error</>
+						) : isLoading ? (
+							<>Loading...</>
+						) : data ? (
+							data.results.map((category, index) => (
+								<Button
+									key={`category-${index}`}
+									onClick={(e) => {
+										dispatch(changeCategory(`${e.target.textContent}`));
+										dispatch(filterProducts(`${e.target.textContent}`));
+									}}
+								>
+									{category.name}
+								</Button>
+							))
+						) : null}
 
-						<Button
-							onClick={(e) => {
-								dispatch(changeCategory(`${e.target.textContent}`));
-								dispatch(filterProducts(`${e.target.textContent}`));
-							}}
-						>
-							food
-						</Button>
-						<Button
-							onClick={(e) => {
-								dispatch(changeCategory(`${e.target.textContent}`));
-								dispatch(filterProducts(`${e.target.textContent}`));
-							}}
-						>
-							candles
-						</Button>
-						<Button
-							onClick={(e) => {
-								dispatch(changeCategory(`${e.target.textContent}`));
-								dispatch(filterProducts(`${e.target.textContent}`));
-							}}
-						>
-							clothing
-						</Button>
 						<Button
 							onClick={(e) => {
 								dispatch(filterProducts(`${e.target.textContent}`));
@@ -73,7 +58,10 @@ const Category = () => {
 			>
 				<Typography variant='h1'> {categories.currentCategory} </Typography>
 
-				<Typography variant='h6'> Description goes here ...</Typography>
+				<Typography variant='h6'>
+					{' '}
+					{categories.currentCategory.description}
+				</Typography>
 			</Container>
 		</>
 	);
