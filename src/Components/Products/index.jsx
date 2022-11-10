@@ -7,6 +7,7 @@ import {
 	Container,
 	Typography,
 	CircularProgress,
+	Alert,
 } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { useSelector, useDispatch } from 'react-redux';
@@ -38,7 +39,7 @@ const Products = () => {
 					spacing={4}
 				>
 					{error ? (
-						<>Oh no, there was an error</>
+						<Alert severity='error'>Oops... there was an error with getting the data. Try again later.</Alert>
 					) : isLoading ? (
 						<Container maxWidth='md'>
 							<CircularProgress
