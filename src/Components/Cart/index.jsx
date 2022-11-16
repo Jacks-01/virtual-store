@@ -9,8 +9,6 @@ import numeral from 'numeral';
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
-	console.log(cart);
-
 	const [drawer, setDrawer] = useState(false);
 
 	return (

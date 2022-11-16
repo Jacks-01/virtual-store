@@ -1,8 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 
 const initialState = {
-	currentCategory: '',
-	categories: ['electronics', 'food'],
+	currentCategory: [],
+	currentDescription: '',
+	cachedCategories: [],
 };
 
 export const categorySlice = createSlice({
@@ -11,14 +12,21 @@ export const categorySlice = createSlice({
 	reducers: {
 		changeCategory: (state, action) => {
 			// change the current category
-			console.log('categories.jsx changeCategory()');
-			state.currentCategory = action.payload
-			console.log(state.currentCategory)
-			
-		}
+			console.log('yo yo', current(state))
+			state.currentCategory = state.cachedCategories.filter(
+				(category) => category.name === action.payload.name
+			);
+			console.log('yo x5', current(state))
+			state.currentDescription = action.payload.description
+		},
+		getCategoriesFromApi: (state, action) => {
+			// console.log('yo', action.payload);
+			state.cachedCategories = action.payload
+			// console.log('yo yo yo ', state.cachedCategories)
+		},
 	},
 });
 
-export const { changeCategory } = categorySlice.actions
+export const { changeCategory, getCategoriesFromApi } = categorySlice.actions;
 
-export default categorySlice.reducer
+export default categorySlice.reducer;
