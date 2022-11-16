@@ -12,15 +12,16 @@ export const productSlice = createSlice({
 		filterProducts: (state, action) => {
 			// "reset" state by changing it to the master copy recieved from the api. This is essentially caching the data we fetch so it doesn't modify the original products array.
 			state.products = state.cachedProducts;
+			console.log(action.payload)
 			
 			// reset the products array
 			if (action.payload === 'reset filter') {
-				state.products = state.cachedProducts;
+				state.products = [...state.cachedProducts ];
 				return;
 			}
 			// filter items based on category here
 			state.products = state.products.filter(
-				(product) => product.category === action.payload.name
+				(product) => product.category === action.payload
 			);
 		},
 		getProductsFromApi: (state, action) => {

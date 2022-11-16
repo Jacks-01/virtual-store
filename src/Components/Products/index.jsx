@@ -16,7 +16,7 @@ import React, { useEffect } from 'react';
 import { useGetProductByNameQuery } from '../../store/services/categories';
 import { getProductsFromApi } from '../../store/products';
 const Products = () => {
-	const { products } = useSelector((state) => state.products);
+	const products  = useSelector((state) => state.products);
 	const categories = useSelector((state) => state.categories);
 	const dispatch = useDispatch();
 	const { data, error, isLoading } = useGetProductByNameQuery('');
@@ -44,7 +44,7 @@ const Products = () => {
 							/>
 						</Container>
 					) : data ? (
-						products.map((product, index) => (
+						products.products.map((product, index) => (
 							<Grid key={`product-${index}`}>
 								<Card
 									
