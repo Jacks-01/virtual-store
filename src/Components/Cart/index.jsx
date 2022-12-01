@@ -6,9 +6,12 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Grid from '@mui/material/Unstable_Grid2';
 import numeral from 'numeral';
+import { useDispatch } from 'react-redux';
+import { removeItem } from '../../store/cart';
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
+	const dispatch = useDispatch();
 	const [drawer, setDrawer] = useState(false);
 
 	return (
@@ -44,7 +47,12 @@ const Cart = () => {
 									<Typography>
 										{numeral(item.price).format('$0,0.00')}
 									</Typography>
-									<IconButton sx={{ color: 'black' }}>
+									<IconButton
+										sx={{ color: 'black' }}
+										onClick={() => {
+											dispatch(removeItem(item));
+										}}
+									>
 										<RemoveCircleIcon />
 									</IconButton>
 								</Grid>
@@ -58,7 +66,10 @@ const Cart = () => {
 						justifyContent='flex-end'
 						sx={{ pr: '3.5rem', mt: '1rem' }}
 					>
-						<Typography> Subtotal: {numeral(cart.subtotal).format('$0,0.00')}</Typography>
+						<Typography>
+							{' '}
+							Subtotal: {numeral(cart.subtotal).format('$0,0.00')}
+						</Typography>
 					</Grid>
 				</List>
 			</Drawer>

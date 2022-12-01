@@ -19,7 +19,14 @@ export const cartSlice = createSlice({
 			}, 0);
 		},
 
-		removeItem: (state, action) => {},
+		removeItem: (state, action) => {
+			// remove item from cart
+			console.log('removing item', action.payload);
+			state.items = state.items.filter(
+				(item) => item.name !== action.payload.name
+			);
+			state.subtotal -= action.payload.price;
+		},
 	},
 });
 
