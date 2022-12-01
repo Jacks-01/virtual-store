@@ -18,7 +18,7 @@ const Category = () => {
 	const dispatch = useDispatch();
 	//* I want to modify this so I can put in arguments later
 	const { data, error, isLoading } = useGetCategoryByNameQuery('');
-	
+
 	useEffect(() => {
 		if (data) dispatch(getCategoriesFromApi([...data.results]));
 		else if (isLoading) console.log('LOADING......');
@@ -78,9 +78,18 @@ const Category = () => {
 				maxWidth='xs'
 				sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}
 			>
-				<Typography variant='h1'> {categories.currentCategory[0].name} </Typography>
-
-				<Typography variant='h6'> {categories.currentCategory[0].description}</Typography>
+				{categories.currentCategory.length > 0 && (
+					<>
+						<Typography variant='h1'>
+							{' '}
+							{categories.currentCategory[0].name}{' '}
+							<Typography variant='h6'>
+								{' '}
+								{categories.currentCategory[0].description}
+							</Typography>
+						</Typography>
+					</>
+				)}
 			</Container>
 		</>
 	);
